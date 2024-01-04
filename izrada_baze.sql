@@ -71,22 +71,22 @@ CREATE TABLE korisnikove_temperature (
 
 INSERT INTO korisnikove_temperature (id_korisnika, id_temperature)
 VALUES
--- ZA KORISNIKA S ID=1 (lkovac)
+
     (1, 1),
     (1, 4),
     (1, 3),
     (1, 2),
--- ZA KORISNIKA S ID = 2(vilic)
+
     (2, 1),
     (2, 2),
     (2, 4),
     
-    -- ZA KORISNIKA S ID=3 (dkovac)
+    
     (3, 6),
     (3, 7),
     (3, 8),
     (3, 2),
--- ZA KORISNIKA S ID = 4(kkolar)
+
     (4, 1),
     (4, 2),
     (4, 5),
@@ -121,22 +121,22 @@ CREATE TABLE korisnikove_vlage (
 );
 
 INSERT INTO korisnikove_vlage (id_korisnika, id_vlage) VALUES
--- ZA KORISNIKA S ID=1 (lkovac)
+
     (1, 1),
     (1, 4),
     (1, 3),
     (1, 2),
--- ZA KORISNIKA S ID = 2(vilic)
+
     (2, 1),
     (2, 2),
     (2, 4),
     
-    -- ZA KORISNIKA S ID=3 (dkovac)
+
     (3, 6),
     (3, 7),
     (3, 8),
     (3, 2),
--- ZA KORISNIKA S ID = 4(kkolar)
+
     (4, 1),
     (4, 2),
     (4, 5),
