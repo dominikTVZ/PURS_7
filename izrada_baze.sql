@@ -4,14 +4,14 @@ CREATE DATABASE lvj6;
 USE lvj6;
 
 
-DROP USER  app;
+DROP USER IF EXISTS app;
 CREATE USER app@'%' IDENTIFIED BY '1234';
 GRANT SELECT, INSERT, UPDATE, DELETE ON lvj6.* TO app@'%';
 
 -- izrada tablice temperatura i upis
 
 CREATE TABLE temperatura (
-	id INT auto_increment PRIMARY KEY,
+	id INT PRIMARY KEY auto_increment,
     datum DATE,
     vrijednost INT
     
@@ -43,13 +43,13 @@ VALUES
 
 
 CREATE TABLE korisnik(
-	id INT auto_increment PRIMARY KEY,
+	id INT PRIMARY KEY auto_increment ,
     ime CHAR(50),
     prezime CHAR(50),
     username VARCHAR(50),
     password VARCHAR(50),
     id_ovlasti INT,
-    FOREIGN KEY (id_ovlasti) REFERENCES ovlasti(id) ON UPDATE CASCADE
+    FOREIGN KEY (id_ovlasti) REFERENCES ovlasti(id) ON UPDATE CASCADE ON DELETE SET NULL
 );
 
 
@@ -64,8 +64,8 @@ VALUES
 CREATE TABLE korisnikove_temperature (
     id_korisnika INT NOT NULL,
     id_temperature INT NOT NULL,
-    FOREIGN KEY (id_korisnika) REFERENCES korisnik(id) ON DELETE CASCADE,
-    FOREIGN KEY (id_temperature) REFERENCES temperatura(id) ON DELETE CASCADE,
+    FOREIGN KEY (id_korisnika) REFERENCES korisnik(id)  ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (id_temperature) REFERENCES temperatura(id)  ON UPDATE CASCADE ON DELETE CASCADE,
     PRIMARY KEY (id_korisnika, id_temperature)
 );
 
