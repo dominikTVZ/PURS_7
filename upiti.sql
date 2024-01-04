@@ -21,5 +21,12 @@ INNER JOIN temperatura ON korisnikove_temperature.id_temperature = temperatura.i
 
 
 
+-- vjezba 7
+DROP USER app;
+CREATE USER app@'%' IDENTIFIED BY '1234';
+GRANT SELECT, INSERT, UPDATE, DELETE ON lvj6.* TO app@'%';
 
- 
+SELECT * FROM mysql.user; 
+
+SELECT * FROM korisnikove_temperature;
+
