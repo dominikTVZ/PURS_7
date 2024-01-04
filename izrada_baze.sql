@@ -47,9 +47,9 @@ CREATE TABLE korisnik(
     ime CHAR(50),
     prezime CHAR(50),
     username VARCHAR(50),
-    password VARCHAR(50),
+    password BINARY(32),
     id_ovlasti INT,
-    FOREIGN KEY (id_ovlasti) REFERENCES ovlasti(id) ON UPDATE CASCADE ON DELETE SET NULL
+    FOREIGN KEY (id_ovlasti) REFERENCES ovlasti(id) ON UPDATE CASCADE 
 );
 
 
@@ -64,14 +64,13 @@ VALUES
 CREATE TABLE korisnikove_temperature (
     id_korisnika INT NOT NULL,
     id_temperature INT NOT NULL,
-    FOREIGN KEY (id_korisnika) REFERENCES korisnik(id)  ON UPDATE CASCADE ON DELETE CASCADE,
-    FOREIGN KEY (id_temperature) REFERENCES temperatura(id)  ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (id_korisnika) REFERENCES korisnik(id)  ON UPDATE CASCADE,
+    FOREIGN KEY (id_temperature) REFERENCES temperatura(id)  ON UPDATE CASCADE ,
     PRIMARY KEY (id_korisnika, id_temperature)
 );
 
 INSERT INTO korisnikove_temperature (id_korisnika, id_temperature)
 VALUES
-
     (1, 1),
     (1, 4),
     (1, 3),
