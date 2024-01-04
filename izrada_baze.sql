@@ -64,8 +64,8 @@ VALUES
 CREATE TABLE korisnikove_temperature (
     id_korisnika INT NOT NULL,
     id_temperature INT NOT NULL,
-    FOREIGN KEY (id_korisnika) REFERENCES korisnik(id)  ON UPDATE CASCADE,
-    FOREIGN KEY (id_temperature) REFERENCES temperatura(id)  ON UPDATE CASCADE ,
+    FOREIGN KEY (id_korisnika) REFERENCES korisnik(id)  ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (id_temperature) REFERENCES temperatura(id)  ON UPDATE CASCADE ON DELETE CASCADE,
     PRIMARY KEY (id_korisnika, id_temperature)
 );
 
@@ -114,8 +114,8 @@ VALUES
 CREATE TABLE korisnikove_vlage (
 	id_korisnika INT,
     id_vlage INT,
-    FOREIGN KEY (id_korisnika) REFERENCES korisnik(id) ON DELETE CASCADE,
-    FOREIGN KEY (id_vlage) REFERENCES vlaga(id) ON DELETE CASCADE,
+    FOREIGN KEY (id_korisnika) REFERENCES korisnik(id) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (id_vlage) REFERENCES vlaga(id) ON UPDATE CASCADE ON DELETE CASCADE,
     PRIMARY KEY (id_korisnika, id_vlage)
 );
 
