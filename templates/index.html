@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'styles_index.css') }}"/>
+    <title>{{naslov}}</title>
+    
+</head>
+    <body>
+        <div class = "kontenjer">
+            <div class ="header">
+                <div class="header-lijevo">
+                    <p>{{username}}</p>
+                    <img src="{{ url_for('static', filename='images/user-icon.png') }}" alt="User" width = "100px">
+                </div>
+    
+            <div class = "header-desno">
+            <img src="{{ url_for('static', filename='images/icon.png') }}" alt="Kucica" width = 100px>
+            </div>
+        </div>
+        <nav>
+            <a href="{{ url_for('logout') }}">Logout</a>
+            <a href="?id=1">Temperatura</a>
+            <a href="?id=2">Vlaga</a>
+        </nav>
+        <main>
+            <table>
+                <thead>
+                    <th>Datum</th>  
+                    <th>{{tip}}</th>
+                </thead>  
+                <tbody>
+                    {% for podatak in podaci %}
+                    {% if podatak[0] %}
+                    <tr>
+                        <td>{{podatak[1]}}</td>
+                        <td>{{podatak[2]}}</td>
+                        
+                        <td>                                                   
+                            <form action="{{ url_for('delete', id_retka = podatak[0], id_podatka = tip_podatka[0]) }}" method="POST" >
+                                <input type="submit" value="Obriši" class="button">
+                            </form>                         
+                        </td>
+                    
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </main>
+        </div>
+    </div>
+</body>
+</html>
