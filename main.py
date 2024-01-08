@@ -72,13 +72,15 @@ def check():
     password = request.form.get('password')    
     upit  = render_template('select_user.sql', username = username, password = password)
     odgovor = g.cursor.execute(upit)
+    print("Ovo je odgovor:")
+    print(odgovor)
     redak = g.cursor.fetchone()
-    id_korisnika = redak[0]
-    if odgovor:
+    print("Ovo je redak:")
+    print(redak)
+    if redak:
+        id_korisnika = redak[0]
         session['username'] = username
         session['id'] = id_korisnika
-        print(username)
-        print(id_korisnika)
         return redirect(url_for('index'))
     else:
         return render_template('login.html', naslov='Stranica za prijavu', poruka='Uneseni su pogresni podaci')
